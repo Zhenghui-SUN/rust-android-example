@@ -8,10 +8,17 @@ edition = "2018"
 crate-type = ["lib", "cdylib"]
 
 [dependencies]
-game-gl = { git = "https://github.com/Kaiser1989/game-gl" }
+game-gl = { git = "https://github.com/Zhenghui-SUN/game-gl" }
+# game-gl = { path = "../../sunzhenghui-game-gl/game-gl" }
+jni = "0.18.0"
+jni-sys = "0.3.0"
 
 [target.'cfg(target_os = "android")'.dependencies]
-ndk-glue = { git = "https://github.com/Kaiser1989/android-ndk-rs" }
+ndk-glue = { git = "https://github.com/Zhenghui-SUN/android-ndk-rs" }
+ndk = { git = "https://github.com/Zhenghui-SUN/android-ndk-rs" }
+# ndk-glue = { path = "../../sunzhenghui-android-ndk-rs/android-ndk-rs/ndk-glue", features = ["logger"] }
+# ndk = { path = "../../sunzhenghui-android-ndk-rs/android-ndk-rs/ndk" }
+rand = "0.8.4"
 
 [package.metadata.android]
 build_targets = [ "armv7-linux-androideabi", "aarch64-linux-android", "i686-linux-android", "x86_64-linux-android" ]
