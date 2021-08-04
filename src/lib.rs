@@ -22,9 +22,17 @@ fn main() {
 }
 
 #[no_mangle]
-pub unsafe extern fn Java_com_example_rust_1demo_RustUtils_drawColor__Landroid_view_Surface_2I(env: *mut JNIEnv, _: JClass, surface: jobject, color: jint) -> jboolean {
+pub unsafe extern fn Java_com_example_rust_1demo_RustUtils_drawColorTriangle__Landroid_view_Surface_2I(env: *mut JNIEnv, _: JClass, surface: jobject, color: jint) -> jboolean {
     println!("call Java_com_example_rust_1demo_RustUtils_drawColor__Landroid_view_Surface_2I"); 
     ndk_glue::set_native_window(NativeWindow::from_surface(env, surface));
     runner::start();
     0
+}
+
+#[no_mangle]
+pub unsafe extern fn Java_com_example_rust_1demo_RustUtils_stop(env: *mut JNIEnv, _: JClass) {
+    println!("call Java_com_example_rust_1demo_RustUtils_stop"); 
+    runner::stop();
+    ndk_glue::native_window().as_ref().unwrap().release();
+    ndk_glue::reset_native_window();
 }

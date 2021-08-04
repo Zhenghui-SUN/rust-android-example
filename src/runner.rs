@@ -9,12 +9,22 @@ use game_gl::{ GameLoop, Runner, gl, Gl, InputEvent};
 
 use std::time::Instant;
 
+static mut GAME_LOOP: Option<GameLoop<ExampleRunner>> = None;
 
 pub fn start() {
-    let mut game_loop = GameLoop::new(ExampleRunner{
-        startTime: Instant::now()
-    });
-    game_loop.run();
+    unsafe {
+        GAME_LOOP = Some(GameLoop::new(ExampleRunner{
+            startTime: Instant::now()
+        }));
+        GAME_LOOP.as_mut().unwrap().run();
+    }
+    // GAME_LOOP.unwrap().run();
+}
+
+pub fn stop() {
+    unsafe {
+        GAME_LOOP.as_mut().unwrap().stop();
+    }
 }
 
 pub struct ExampleRunner {
