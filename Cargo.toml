@@ -14,7 +14,7 @@ jni = "0.18.0"
 jni-sys = "0.3.0"
 
 [target.'cfg(target_os = "android")'.dependencies]
-ndk-glue = { git = "https://github.com/Zhenghui-SUN/android-ndk-rs" }
+ndk-glue = { git = "https://github.com/Zhenghui-SUN/android-ndk-rs", features = ["logger"] }
 ndk = { git = "https://github.com/Zhenghui-SUN/android-ndk-rs" }
 # ndk-glue = { path = "../../sunzhenghui-android-ndk-rs/android-ndk-rs/ndk-glue", features = ["logger"] }
 # ndk = { path = "../../sunzhenghui-android-ndk-rs/android-ndk-rs/ndk" }
