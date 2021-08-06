@@ -30,6 +30,11 @@ pub unsafe extern fn Java_com_example_rust_1demo_RustUtils_drawColorTriangle__La
 }
 
 #[no_mangle]
+pub unsafe extern fn Java_com_example_rust_1demo_RustUtils_init(env: *mut JNIEnv, _: JClass) {
+    ndk_glue::android_init();
+}
+
+#[no_mangle]
 pub unsafe extern fn Java_com_example_rust_1demo_RustUtils_stop(env: *mut JNIEnv, _: JClass) {
     println!("call Java_com_example_rust_1demo_RustUtils_stop"); 
     runner::stop();
